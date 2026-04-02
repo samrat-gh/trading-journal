@@ -27,7 +27,7 @@ export function formatCurrency(
     minimumFractionDigits?: number;
     maximumFractionDigits?: number;
     noDecimals?: boolean;
-  }
+  },
 ) {
   const {
     currency = "USD",

@@ -23,7 +23,8 @@ function ChipSVG() {
       enableBackground="new 0 0 132 92"
       viewBox="0 0 132 92"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-14">
+      className="w-14"
+    >
       <title>Chip</title>
       <rect
         x="0.5"
@@ -215,7 +216,8 @@ export function AccountOverview() {
                   {recentPayments.map((transaction) => (
                     <div
                       key={transaction.id}
-                      className="flex items-center gap-2">
+                      className="flex items-center gap-2"
+                    >
                       <div className="bg-muted flex size-10 shrink-0 items-center justify-center rounded-full">
                         <SimpleIcon
                           icon={transaction.icon}
@@ -237,8 +239,9 @@ export function AccountOverview() {
                               "text-sm leading-none font-medium tabular-nums",
                               transaction.type === "debit"
                                 ? "text-destructive"
-                                : "text-green-500"
-                            )}>
+                                : "text-green-500",
+                            )}
+                          >
                             {formatCurrency(transaction.amount, {
                               noDecimals: true,
                             })}

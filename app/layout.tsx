@@ -35,21 +35,23 @@ export default async function RootLayout({
   const themeMode = await getPreference<ThemeMode>(
     "theme_mode",
     THEME_MODE_VALUES,
-    "light"
+    "light",
   );
   const themePreset = await getPreference<ThemePreset>(
     "theme_preset",
     THEME_PRESET_VALUES,
-    "default"
+    "default",
   );
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <PreferencesStoreProvider
           themeMode={themeMode}
-          themePreset={themePreset}>
+          themePreset={themePreset}
+        >
           {children}
 
           <Toaster />

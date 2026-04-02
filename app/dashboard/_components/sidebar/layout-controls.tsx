@@ -93,7 +93,8 @@ export function LayoutControls(props: LayoutControlsProps) {
                 value={themePreset}
                 onValueChange={(value) =>
                   handleValueChange("theme_preset", value)
-                }>
+                }
+              >
                 <SelectTrigger size="sm" className="w-full text-xs">
                   <SelectValue placeholder="Preset" />
                 </SelectTrigger>
@@ -102,7 +103,8 @@ export function LayoutControls(props: LayoutControlsProps) {
                     <SelectItem
                       key={preset.value}
                       className="text-xs"
-                      value={preset.value}>
+                      value={preset.value}
+                    >
                       <span
                         className="size-2.5 rounded-full"
                         style={{
@@ -129,7 +131,8 @@ export function LayoutControls(props: LayoutControlsProps) {
                 value={themeMode}
                 onValueChange={(value) =>
                   handleValueChange("theme_mode", value)
-                }>
+                }
+              >
                 <ToggleGroupItem value="light" aria-label="Toggle inset">
                   Light
                 </ToggleGroupItem>
@@ -149,7 +152,8 @@ export function LayoutControls(props: LayoutControlsProps) {
                 value={variant}
                 onValueChange={(value) =>
                   handleValueChange("sidebar_variant", value)
-                }>
+                }
+              >
                 <ToggleGroupItem value="inset" aria-label="Toggle inset">
                   Inset
                 </ToggleGroupItem>
@@ -172,7 +176,8 @@ export function LayoutControls(props: LayoutControlsProps) {
                 value={navbarStyle}
                 onValueChange={(value) =>
                   handleValueChange("navbar_style", value)
-                }>
+                }
+              >
                 <ToggleGroupItem value="sticky" aria-label="Toggle sticky">
                   Sticky
                 </ToggleGroupItem>
@@ -192,13 +197,15 @@ export function LayoutControls(props: LayoutControlsProps) {
                 value={collapsible}
                 onValueChange={(value) =>
                   handleValueChange("sidebar_collapsible", value)
-                }>
+                }
+              >
                 <ToggleGroupItem value="icon" aria-label="Toggle icon">
                   Icon
                 </ToggleGroupItem>
                 <ToggleGroupItem
                   value="offcanvas"
-                  aria-label="Toggle offcanvas">
+                  aria-label="Toggle offcanvas"
+                >
                   OffCanvas
                 </ToggleGroupItem>
               </ToggleGroup>
@@ -214,13 +221,15 @@ export function LayoutControls(props: LayoutControlsProps) {
                 value={contentLayout}
                 onValueChange={(value) =>
                   handleValueChange("content_layout", value)
-                }>
+                }
+              >
                 <ToggleGroupItem value="centered" aria-label="Toggle centered">
                   Centered
                 </ToggleGroupItem>
                 <ToggleGroupItem
                   value="full-width"
-                  aria-label="Toggle full-width">
+                  aria-label="Toggle full-width"
+                >
                   Full Width
                 </ToggleGroupItem>
               </ToggleGroup>

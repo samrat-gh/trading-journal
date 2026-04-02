@@ -16,6 +16,7 @@ import {
   Moon,
   Sun,
 } from "lucide-react";
+import Link from "next/link";
 
 // --- Types ---
 interface FaqItem {
@@ -43,7 +44,8 @@ const ThemeToggle = () => {
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="rounded-md p-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800 transition-colors"
-      aria-label="Toggle Dark Mode">
+      aria-label="Toggle Dark Mode"
+    >
       {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
     </button>
   );
@@ -68,22 +70,26 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600 dark:text-zinc-400">
           <a
             href="#features"
-            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          >
             Features
           </a>
           <a
             href="#how-it-works"
-            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          >
             How it Works
           </a>
           <a
             href="#pricing"
-            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          >
             Pricing
           </a>
           <a
             href="#faq"
-            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+            className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+          >
             FAQ
           </a>
         </div>
@@ -103,7 +109,8 @@ const Navbar = () => {
           <ThemeToggle />
           <button
             className="text-zinc-600 dark:text-zinc-400"
-            onClick={() => setIsOpen(!isOpen)}>
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -158,9 +165,12 @@ const Hero = () => (
       </p>
 
       <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <button className="w-full sm:w-auto rounded-lg bg-zinc-900 px-8 py-3.5 text-sm font-semibold text-white hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-200 dark:bg-emerald-600 dark:hover:bg-emerald-500 dark:shadow-none">
+        <Link
+          href="/dashboard"
+          className="w-full sm:w-auto rounded-lg bg-zinc-900 px-8 py-3.5 text-sm font-semibold text-white hover:bg-zinc-800 transition-all shadow-lg shadow-zinc-200 dark:bg-emerald-600 dark:hover:bg-emerald-500 dark:shadow-none"
+        >
           Start Journaling for Free
-        </button>
+        </Link>
         <button className="w-full sm:w-auto rounded-lg border border-zinc-200 bg-white px-8 py-3.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 transition-all dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-800">
           See Demo
         </button>
@@ -171,7 +181,7 @@ const Hero = () => (
 
       {/* Abstract UI Mockup */}
       <div className="mx-auto mt-20 max-w-5xl rounded-xl border border-zinc-200 bg-white p-2 shadow-2xl shadow-zinc-200/50 dark:bg-zinc-900 dark:border-zinc-800 dark:shadow-black/50">
-        <div className="rounded-lg border border-zinc-100 bg-zinc-50/50 p-4 md:p-8 aspect-[16/9] overflow-hidden relative dark:bg-zinc-950 dark:border-zinc-800">
+        <div className="rounded-lg border border-zinc-100 bg-zinc-50/50 p-4 md:p-8 aspect-video overflow-hidden relative dark:bg-zinc-950 dark:border-zinc-800">
           {/* Mock Sidebar */}
           <div className="absolute left-0 top-0 bottom-0 w-16 md:w-64 border-r border-zinc-200 bg-white hidden sm:block p-4 space-y-4 dark:bg-zinc-900 dark:border-zinc-800">
             <div className="h-8 w-3/4 bg-zinc-100 rounded-md animate-pulse dark:bg-zinc-800"></div>
@@ -315,7 +325,8 @@ const Problem = () => (
 const Features = () => (
   <section
     id="features"
-    className="bg-zinc-50 py-24 border-t border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800">
+    className="bg-zinc-50 py-24 border-t border-zinc-200 dark:bg-zinc-900 dark:border-zinc-800"
+  >
     <div className="mx-auto max-w-7xl px-6">
       <div className="mb-16 text-center">
         <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
@@ -406,7 +417,8 @@ const Testimonials = () => {
           {items.map((item, i) => (
             <div
               key={i}
-              className="rounded-2xl bg-zinc-50 p-8 border border-zinc-100 dark:bg-zinc-900 dark:border-zinc-800">
+              className="rounded-2xl bg-zinc-50 p-8 border border-zinc-100 dark:bg-zinc-900 dark:border-zinc-800"
+            >
               <p className="italic text-zinc-700 dark:text-zinc-300 mb-6">
                 "{item.quote}"
               </p>
@@ -538,10 +550,12 @@ const FAQ = () => {
           {faqs.map((faq, idx) => (
             <div
               key={idx}
-              className="rounded-lg border border-zinc-200 bg-white overflow-hidden dark:bg-zinc-900 dark:border-zinc-800">
+              className="rounded-lg border border-zinc-200 bg-white overflow-hidden dark:bg-zinc-900 dark:border-zinc-800"
+            >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="flex w-full items-center justify-between px-6 py-4 text-left font-medium text-zinc-900 hover:bg-zinc-50 dark:text-zinc-100 dark:hover:bg-zinc-800/50">
+                className="flex w-full items-center justify-between px-6 py-4 text-left font-medium text-zinc-900 hover:bg-zinc-50 dark:text-zinc-100 dark:hover:bg-zinc-800/50"
+              >
                 {faq.question}
                 {openIndex === idx ? (
                   <ChevronUp size={20} className="text-zinc-400" />
@@ -608,7 +622,8 @@ export default function LandingPage() {
       <Features />
       <div
         id="how-it-works"
-        className="bg-white py-24 border-t border-zinc-200 dark:bg-zinc-950 dark:border-zinc-800">
+        className="bg-white py-24 border-t border-zinc-200 dark:bg-zinc-950 dark:border-zinc-800"
+      >
         <div className="mx-auto max-w-7xl px-6 text-center">
           <h2 className="text-3xl font-bold mb-12 text-zinc-900 dark:text-zinc-50">
             How It Works

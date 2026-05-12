@@ -1,17 +1,16 @@
 "use client";
 
-import { useState } from "react";
-
 import { BadgeCheck, Bell, CreditCard, LogOut } from "lucide-react";
+import { useState } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuGroup,
 } from "@/components/ui/dropdown-menu";
 import { cn, getInitials } from "@/lib/utils";
 
@@ -53,7 +52,7 @@ export function AccountSwitcher({
             className={cn(
               "p-0",
               user.id === activeUser.id &&
-                "bg-accent/50 border-l-primary border-l-2",
+                "border-l-2 border-l-primary bg-accent/50",
             )}
             onClick={() => setActiveUser(user)}
           >

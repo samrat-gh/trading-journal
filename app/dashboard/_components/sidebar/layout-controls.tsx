@@ -22,15 +22,15 @@ import { updateThemeMode, updateThemePreset } from "@/lib/theme-utils";
 import { setValueToCookie } from "@/server/server-actions";
 import { usePreferencesStore } from "@/stores/preferences/preferences-provider";
 import type {
-  SidebarVariant,
-  SidebarCollapsible,
   ContentLayout,
   NavbarStyle,
+  SidebarCollapsible,
+  SidebarVariant,
 } from "@/types/preferences/layout";
 import {
   THEME_PRESET_OPTIONS,
-  type ThemePreset,
   type ThemeMode,
+  type ThemePreset,
 } from "@/types/preferences/theme";
 
 type LayoutControlsProps = {
@@ -79,7 +79,7 @@ export function LayoutControls(props: LayoutControlsProps) {
       <PopoverContent align="end">
         <div className="flex flex-col gap-5">
           <div className="space-y-1.5">
-            <h4 className="text-sm leading-none font-medium">
+            <h4 className="font-medium text-sm leading-none">
               Layout Settings
             </h4>
             <p className="text-muted-foreground text-xs">
@@ -88,7 +88,7 @@ export function LayoutControls(props: LayoutControlsProps) {
           </div>
           <div className="space-y-3">
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Preset</Label>
+              <Label className="font-medium text-xs">Preset</Label>
               <Select
                 value={themePreset}
                 onValueChange={(value) =>
@@ -122,7 +122,7 @@ export function LayoutControls(props: LayoutControlsProps) {
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Mode</Label>
+              <Label className="font-medium text-xs">Mode</Label>
               <ToggleGroup
                 className="w-full **:data-[slot=toggle-group-item]:flex-1 **:data-[slot=toggle-group-item]:text-xs"
                 size="sm"
@@ -143,7 +143,7 @@ export function LayoutControls(props: LayoutControlsProps) {
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Sidebar Variant</Label>
+              <Label className="font-medium text-xs">Sidebar Variant</Label>
               <ToggleGroup
                 className="w-full **:data-[slot=toggle-group-item]:flex-1 **:data-[slot=toggle-group-item]:text-xs"
                 size="sm"
@@ -167,7 +167,7 @@ export function LayoutControls(props: LayoutControlsProps) {
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Navbar Style</Label>
+              <Label className="font-medium text-xs">Navbar Style</Label>
               <ToggleGroup
                 className="w-full **:data-[slot=toggle-group-item]:flex-1 **:data-[slot=toggle-group-item]:text-xs"
                 size="sm"
@@ -188,7 +188,7 @@ export function LayoutControls(props: LayoutControlsProps) {
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Sidebar Collapsible</Label>
+              <Label className="font-medium text-xs">Sidebar Collapsible</Label>
               <ToggleGroup
                 className="w-full **:data-[slot=toggle-group-item]:flex-1 **:data-[slot=toggle-group-item]:text-xs"
                 size="sm"
@@ -212,7 +212,7 @@ export function LayoutControls(props: LayoutControlsProps) {
             </div>
 
             <div className="space-y-1">
-              <Label className="text-xs font-medium">Content Layout</Label>
+              <Label className="font-medium text-xs">Content Layout</Label>
               <ToggleGroup
                 className="w-full **:data-[slot=toggle-group-item]:flex-1 **:data-[slot=toggle-group-item]:text-xs"
                 size="sm"

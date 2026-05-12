@@ -1,19 +1,54 @@
 {
+  "editor.defaultFormatter": "biomejs.biome",
+  "biome.enabled": true,
+  "biome.requireConfiguration": true,
+
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSaveMode": "all",
   "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
     "source.fixAll.biome": "always",
+    "source.organizeImports": "always",
     "source.organizeImports.biome": "always"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "always",
+      "source.fixAll.biome": "always",
+      "source.organizeImports": "always",
+      "source.organizeImports.biome": "always"
+    }
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "always",
+      "source.fixAll.biome": "always",
+      "source.organizeImports": "always",
+      "source.organizeImports.biome": "always"
+    }
   },
   "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "always",
+      "source.fixAll.biome": "always",
+      "source.organizeImports": "always",
+      "source.organizeImports.biome": "always"
+    }
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "always",
+      "source.fixAll.biome": "always",
+      "source.organizeImports": "always",
+      "source.organizeImports.biome": "always"
+    }
   }
 }

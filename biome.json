@@ -76,7 +76,8 @@
             "noInvalidConstructorSuper": "off",
             "noSetterReturn": "off",
             "noUndeclaredVariables": "off",
-            "noUnreachable": "off"
+            "noUnreachable": "off",
+            "useUniqueElementIds": "off"
           },
           "style": {
             "useConst": "error"

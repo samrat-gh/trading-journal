@@ -1,15 +1,16 @@
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
+import { getPreference } from "@/server/server-actions";
+import { PreferencesStoreProvider } from "@/stores/preferences/preferences-provider";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "@/styles/globals.css";
-import { Toaster } from "@/components/ui/sonner";
-import { PreferencesStoreProvider } from "@/stores/preferences/preferences-provider";
-import { getPreference } from "@/server/server-actions";
 
 import {
   THEME_MODE_VALUES,
   THEME_PRESET_VALUES,
-  type ThemePreset,
   type ThemeMode,
+  type ThemePreset,
 } from "@/types/preferences/theme";
 
 const geistSans = Geist({
@@ -48,14 +49,21 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <PreferencesStoreProvider
-          themeMode={themeMode}
-          themePreset={themePreset}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
-          {children}
+          <PreferencesStoreProvider
+            themeMode={themeMode}
+            themePreset={themePreset}
+          >
+            {children}
 
-          <Toaster />
-        </PreferencesStoreProvider>
+            <Toaster />
+          </PreferencesStoreProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

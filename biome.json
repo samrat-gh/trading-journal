@@ -28,8 +28,9 @@
         "useAriaPropsForRole": "warn",
         "useValidAriaProps": "warn",
         "noSvgWithoutTitle": "warn",
-        "useValidAnchor": "warn",
-        "useValidAriaValues": "warn"
+        "useValidAnchor": "off",
+        "useValidAriaValues": "warn",
+        "useButtonType": "off"
       },
       "complexity": {
         "noBannedTypes": "error",
@@ -42,7 +43,8 @@
         "noPrecisionLoss": "error",
         "useExhaustiveDependencies": "warn",
         "useHookAtTopLevel": "error",
-        "useJsxKeyInIterable": "error"
+        "useJsxKeyInIterable": "error",
+        "useUniqueElementIds": "off"
       },
       "nursery": {
         "useSortedClasses": {

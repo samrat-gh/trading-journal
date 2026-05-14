@@ -5,10 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useId, useState } from "react";
 
 export function LoginForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -53,27 +56,22 @@ export function LoginForm() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: formData.email,
+        password: formData.password,
       });
 
-      if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          throw new Error("Invalid email or password");
-        }
-        const data = await response.json().catch(() => ({}));
-        throw new Error(data.message || "Something went wrong during login.");
+      if (res?.error) {
+        setServerError(res.error);
+        return;
       }
 
       console.log("Login successful");
-      // Handle redirect...
+      router.push("/dashboard");
     } catch (error: unknown) {
       if (error instanceof Error) {
-        setServerError(error.message);
+        setServerError(error.message || "An unexpected error occurred");
       } else {
         setServerError("An unexpected error occurred");
       }
@@ -164,9 +162,14 @@ export function LoginForm() {
         variant="outline"
         className="w-full border-zinc-200 bg-white text-zinc-900 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
         disabled={isSubmitting}
-        onClick={() => {
-          // Handle Google login
-          console.log("Login with Google");
+        onClick={async () => {
+          setIsSubmitting(true);
+          try {
+            await signIn("google", { callbackUrl: "/dashboard" });
+          } catch (error) {
+            setServerError("Google authentication failed");
+            setIsSubmitting(false);
+          }
         }}
       >
         <svg

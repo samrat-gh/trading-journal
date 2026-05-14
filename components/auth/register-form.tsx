@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { signIn } from "next-auth/react";
 import { useId, useState } from "react";
 
 export function RegisterForm() {
@@ -65,28 +66,52 @@ export function RegisterForm() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/auth/register", {
+      const payload = {
+        ...formData,
+        authProvider: "email",
+      };
+
+      const baseUrl =
+        process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:9000";
+      const response = await fetch(`${baseUrl}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
         if (response.status === 403) {
-          throw new Error("Email already exist try another");
+          throw new Error(
+            "Email is already associated with an account. Try another.",
+          );
         }
 
-        // Handle other possible backend errors
+        // Handle possible validation errors (400) or other backend errors
         const data = await response.json().catch(() => ({}));
+
+        if (response.status === 400 && Array.isArray(data.message)) {
+          throw new Error(data.message.join(", "));
+        }
+
         throw new Error(
           data.message || "Something went wrong during registration.",
         );
       }
 
       // Handle successful registration (e.g., redirect or show success message)
-      console.log("Registration successful");
+      const signInRes = await signIn("credentials", {
+        redirect: false,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (signInRes?.error) {
+        throw new Error(signInRes.error);
+      }
+
+      window.location.href = "/dashboard";
     } catch (error: unknown) {
       if (error instanceof Error) {
         setServerError(error.message);
